@@ -1,0 +1,9 @@
+body {
+    font-family: Monospace;
+    background: url(./../img/jungle.jpg);
+    background-position: bottom;
+    background-size: cover;
+    color: #fff;
+    margin: 0px;
+    overflow: hidden;
+}

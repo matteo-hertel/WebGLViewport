@@ -1,42 +1,34 @@
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-		<title>ship_triangle OBJloader</title>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-		<style>
-			body {
-				font-family: Monospace;
-				background:url(./img/jungle.jpg);background-position: bottom;				background-size: cover;
-				color: #fff;
-				margin: 0px;
-				overflow: hidden;
-			}
-			#info {
-				color: #fff;
-				position: absolute;
-				top: 10px;
-				width: 100%;
-				text-align: center;
-				z-index: 100;
-				display:block;
-			}
-			#info a, .button { color: #f00; font-weight: bold; text-decoration: underline; cursor: pointer }
-		</style>
-	</head>
-
-	<body>
-		<div id="info">
-            OBJ loader
-		</div>
-
-		<script src="http://threejs.org/build/three.min.js"></script>
-		<script src="http://threejs.org/examples/js/loaders/OBJLoader.js"></script>
-		<script src="http://threejs.org/examples/js/controls/TrackballControls.js"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.4/hammer.min.js"></script>
-
-		<script src="http://threejs.org/examples/js/Detector.js"></script>
-		<script src="http://threejs.org/examples/js/libs/stats.min.js"></script>		<script src="./js/trex.js"></script>
+<!DOCTYPE html>
 
-	</body>
-</html>
+<html lang="en">
+
+<head>
+
+	<title>Trex</title>
+
+	<meta charset="utf-8">
+
+	<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+
+	<link rel="stylesheet" type="text/css" href="./css/style.css">
+
+</head>
+
+
+
+<body>
+
+	<script src="http://threejs.org/build/three.min.js"></script>
+
+	<script src="http://threejs.org/examples/js/loaders/OBJLoader.js"></script>
+
+	<script src="http://threejs.org/examples/js/controls/OrbitControls.js"></script>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.4/hammer.min.js"></script>
+	<script src="./js/trex/Model.js"></script>
+	<script src="./js/trex/View.js"></script>
+	<script src="./js/trex/Controller.js"></script>
+
+</body>
+
+</html>
