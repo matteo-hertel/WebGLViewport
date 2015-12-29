@@ -1,0 +1,51 @@
+{
+  "name": "performancewidget",
+  "productName": "Performancewidget",
+  "version": "0.0.0",
+  "description": "My remarkable app",
+  "license": "MIT",
+  "repository": "matteo-hertel/performancewidget",
+  "author": {
+    "name": "Matteo Hertel",
+    "email": "info@matteohertel.com",
+    "url": "matteohertel.com"
+  },
+  "electronVersion": "0.36.0",
+  "scripts": {
+    "test": "xo",
+    "start": "electron ./out/index.js",
+    "build": "electron-packager . performancewidget --out=./dist --ignore='^/dist$' --prune --asar --all --version=0.36.0"
+  },
+  "files": [
+    "out/index.html"
+  ],
+  "keywords": [
+    "electron-app",
+    "electron"
+  ],
+  "dependencies": {
+    "electron-debug": "^0.5.0",
+    "del": "^1.2.0",
+    "gulp": "^3.9.0",
+    "gulp-concat": "^2.6.0",
+    "gulp-minify-css": "^1.2.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-replace": "^0.5.3",
+    "gulp-strip-css-comments": "^1.1.0",
+    "gulp-uglify": "^1.2.0",
+    "gulp-watch": "^4.3.4",
+    "string-template": "^0.2.1"
+  },
+  "devDependencies": {
+    "electron-packager": "^5.0.0",
+    "electron-prebuilt": "^0.36.0",
+    "xo": "^0.12.0"
+  },
+  "xo": {
+    "esnext": true,
+    "envs": [
+      "node",
+      "browser"
+    ]
+  }
+}
