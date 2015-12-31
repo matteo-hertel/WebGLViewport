@@ -24,8 +24,8 @@
     "electron"
   ],
   "dependencies": {
-    "electron-debug": "^0.5.0",
     "del": "^1.2.0",
+    "electron-debug": "^0.5.0",
     "gulp": "^3.9.0",
     "gulp-concat": "^2.6.0",
     "gulp-minify-css": "^1.2.0",
@@ -34,6 +34,7 @@
     "gulp-strip-css-comments": "^1.1.0",
     "gulp-uglify": "^1.2.0",
     "gulp-watch": "^4.3.4",
+    "run-sequence": "^1.1.5",
     "string-template": "^0.2.1"
   },
   "devDependencies": {

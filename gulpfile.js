@@ -13,13 +13,20 @@ var replace = require('gulp-replace');
 var concat = require("gulp-concat");
 var watch = require("gulp-watch");
 var format = require("string-template");
+var runSequence = require('run-sequence');
 
 var paths = {
     scripts: [
-        //add scripts
+        "./source/js/libs/three.min.js",
+        "./source/js/libs/OBJLoader.js",
+        "./source/js/libs/OrbitControls.js",
+        "./source/js/libs/hammer.min.js",
+        "./source/js/trex/Model.js",
+        "./source/js/trex/View.js",
+        "./source/js/trex/Controller.js"
     ],
     styles: [
-        //add styles
+        "./source/css/style.css"
     ]
 };
 
@@ -33,21 +40,23 @@ var paths = {
  | The task for production will go in this section
  |
  */
-gulp.task('jsProduction', function () {
+gulp.task('jsProduction', function() {
 
     return gulp.src(paths.scripts)
-            .pipe(concat("app.js"))
-            .pipe(uglify())
-            .pipe(gulp.dest('dist/js'));
+        .pipe(concat("app.js"))
+        .pipe(uglify())
+        .pipe(gulp.dest('dist/js'));
 });
 
-gulp.task('cssProduction', function () {
+gulp.task('cssProduction', function() {
 
     return gulp.src(paths.styles)
-            .pipe(concat("app.css"))
-            .pipe(stripCssComments({all: true}))
-            .pipe(cssmin())
-            .pipe(gulp.dest('dist/css/'));
+        .pipe(concat("app.css"))
+        .pipe(stripCssComments({
+            all: true
+        }))
+        .pipe(cssmin())
+        .pipe(gulp.dest('dist/css/'));
 
 
 });
@@ -60,17 +69,17 @@ gulp.task('cssProduction', function () {
  | The task for development will go in this section
  |
  */
-gulp.task('jsDevelopment', function () {
+gulp.task('jsDevelopment', function() {
 
     return gulp.src(paths.scripts)
-            .pipe(concat("app.js"))
-            .pipe(gulp.dest('dist/js'));
+        .pipe(concat("app.js"))
+        .pipe(gulp.dest('dist/js'));
 });
 
-gulp.task('cssDevelopment', function () {
+gulp.task('cssDevelopment', function() {
     return gulp.src(paths.styles)
-            .pipe(concat("app.css"))
-            .pipe(gulp.dest('dist/css'));
+        .pipe(concat("app.css"))
+        .pipe(gulp.dest('dist/css'));
 
 });
 
@@ -83,12 +92,12 @@ gulp.task('cssDevelopment', function () {
  | Utilities tasks
  |
  */
-gulp.task('clean', function (cb) {
+gulp.task('clean', function(cb) {
     del(['dist'], cb);
 });
-gulp.task('copy', function () {
-    gulp.src(['source/css/fonts/**/*']).pipe(gulp.dest('dist/fonts/'));
-    gulp.src(['source/img/**/*']).pipe(gulp.dest('dist/images/'));
+gulp.task('copy', function() {
+    gulp.src(['source/objs/**/*']).pipe(gulp.dest('dist/objs/'));
+    gulp.src(['source/img/**/*']).pipe(gulp.dest('dist/img/'));
 });
 /*
  |--------------------------------------------------------------------------
@@ -100,11 +109,11 @@ gulp.task('copy', function () {
  */
 
 
-gulp.task('watchcss', function () {
+gulp.task('watchcss', function() {
     return gulp.watch(['source/css/**/*.css'], ["cssDevelopment"]);
 });
 
-gulp.task('watchjs', function () {
+gulp.task('watchjs', function() {
     gulp.watch(['source/js/**/*.js'], ['jsDevelopment']);
 });
 
@@ -113,7 +122,11 @@ gulp.task('watchjs', function () {
  | Gulp tasks group
  |--------------------------------------------------------------------------
  */
-gulp.task('default', ["clean", 'jsProduction', "cssProduction", "copy"]);
-gulp.task('dev', ["clean", 'jsDevelopment', "cssDevelopment", "copy"]);
+gulp.task('default', function() {
+    runSequence("clean", 'jsProduction', "cssProduction", "copy");
+});
+gulp.task('dev', function() {
+    runSequence("clean", 'jsDevelopment', "cssDevelopment", "copy");
+});
 gulp.task('productionjs', ['jsProduction']);
 gulp.task('productioncss', ['cssProduction', "copy"]);
