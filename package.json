@@ -14,7 +14,9 @@
   "scripts": {
     "test": "xo",
     "start": "electron ./out/index.js",
-    "build": "electron-packager . performancewidget --out=./dist --ignore='^/dist$' --prune --asar --all --version=0.36.0"
+    "build": "electron-packager . performancewidget --out=./dist --ignore='^/dist$' --prune --asar --all --version=0.36.0",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "files": [
     "out/index.html"
@@ -26,7 +28,7 @@
   "dependencies": {
     "del": "^1.2.0",
     "electron-debug": "^0.5.0",
-    "gulp": "^3.9.0",
+    "gulp": "^4.0.0",
     "gulp-concat": "^2.6.0",
     "gulp-minify-css": "^1.2.0",
     "gulp-rename": "^1.2.2",
@@ -35,7 +37,8 @@
     "gulp-uglify": "^1.2.0",
     "gulp-watch": "^4.3.4",
     "run-sequence": "^1.1.5",
-    "string-template": "^0.2.1"
+    "string-template": "^0.2.1",
+    "snyk": "^1.105.0"
   },
   "devDependencies": {
     "electron-packager": "^5.0.0",
@@ -48,5 +51,6 @@
       "node",
       "browser"
     ]
-  }
+  },
+  "snyk": true
 }
